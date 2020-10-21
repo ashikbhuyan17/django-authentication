@@ -1,0 +1,66 @@
+{% load static %}
+{% block content %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Register </title>
+    <link href="{% static 'css/style-auth.css' %}" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<!-- main -->
+<div class="main-w3layouts wrapper register">
+    <div class="col-lg-12 col-md-12">
+        <a href="{% url 'index' %}" style="font-size: 20px; text-decoration: none; font-weight: 700; text-transform: uppercase;">User Authentication</a>
+        <span style="font-size: 20px;font-weight: 700; color: #fff;text-transform: uppercase;">/ student register</span>
+    </div>
+    <div class="main-agileinfo">
+        <div class="agileits-top">
+            <h2 class="text-center" style="color: white; font-weight: 700;">Student Register Form</h2>
+            <form action="#" method="post">
+            {% csrf_token %}
+                {% for field in student_reg_form %}
+                      <p>
+                        {% for error in field.errors %}
+                          <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                      </p>
+		        {% endfor %}
+                {% if student_reg_form.non_field_errors %}
+                    <div style="color: red">
+                      <p>{{student_reg_form.non_field_errors}}</p>
+                    </div>
+                {% endif %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                            <h5 style="text-align: left"><span style="color: aqua">Registration Successful </span><a href="{% url 'student_login' %}">Click here </a><span style="color: aqua">to login.</span></h5>
+                        {% else %}
+                            <span style="color: #CC3434">{{ message }}</span>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <br>
+                <input class="text" type="text" name="fullname" placeholder="Full Name" required="">
+                <input class="text email" type="email" name="email" placeholder="Email" required="">
+                <input class="text" type="text" name="department" placeholder="Department" required="">
+                <input class="text number" type="text"  name="student_id" Placeholder="Student ID" required=""/>
+                <input class="text" type="password" name="password1" placeholder="Password" required="">
+                <span class="help-block" style="color:aqua;">* Password contains at least 8 character!</span><br>
+                <span class="help-block" style="color:aqua;">* Password & username can't be similar!</span><br>
+                <span class="help-block" style="color:aqua;">* Password must be a combination of alpha-numeric!</span>
+                <input class="text w3lpass" type="password" name="password2" placeholder="Confirm Password" required="">
+                <input type="submit" value="SIGNUP">
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //main -->
+<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
+{% endblock %}

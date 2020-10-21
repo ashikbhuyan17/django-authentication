@@ -1,0 +1,50 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        {% block title %}
+            authentications
+        {% endblock %}
+    </title>
+    <!-- css files -->
+    <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
+    <!-- //css files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<!-- section -->
+<section class="register">
+	<div class="header">
+		<div class="logo">
+			<a href="{% url 'index' %}">User Authentication </a>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="register-full">
+
+		<div class="register-right">
+            <div class="register-in">
+				<a href="{% url 'student_reg' %}">Student register here »</a>
+			</div>
+			<div class="register-in">
+				<a href="{% url 'student_login' %}">Student login here »</a>
+			</div>
+		</div>
+	<div class="clear"> </div>
+	</div>
+</section>
+<!-- //section -->
+
+
+
+	<!-- copyright -->
+	<p class="agile-copyright">© 2020 Department of Software Engineering,Daffodil International University.</p>
+	<!-- //copyright -->
+</body>
+</html>

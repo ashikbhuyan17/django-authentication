@@ -1,0 +1,45 @@
+{% load static %}
+
+<!-- Sidebar -->
+      <ul class="sidebar navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="">
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+            <span>Student Information</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">
+              {% if user.image %}
+                  <img src="{{ user.image.url }}" class="center">
+              {% else %}
+                  <img src="{% static 'images/avatar' %}" class="center">
+              {% endif %}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span><strong>Name:</strong> {{ user.fullname }}</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">
+            <i class="fa fa-id-card" aria-hidden="true"></i>
+            <span><strong>Student ID:</strong> {{ user.student_id }}</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <span><strong>Email:</strong> {{ user.email }}</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">
+            <i class="fa fa-university" aria-hidden="true"></i>
+            <span><strong>Department:</strong> {{ user.department }} </span></a>
+        </li>
+{#        <li class="nav-item">#}
+{#          <a class="nav-link" href="#">#}
+{#            <i class="fa fa-calendar" aria-hidden="true"></i>#}
+{#            <span><strong>Semester:</strong> Summer-20 </span></a>#}
+{#        </li>#}
+      </ul>
